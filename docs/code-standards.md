@@ -223,9 +223,11 @@ which test fails without the change.
   `origin/main`, don't push the old tree. Deletions in a file you meant to
   create are someone else's tests.
 - **A checkout, worktree and its logs belong to the session that made them.**
-  Work in a worktree of your own, never check out, commit from or clean
-  another session's, and after committing check that `git show --stat HEAD`
-  lists your files and only yours.
+  Work in a worktree of your own (`git worktree add --detach`), never check
+  out, commit from or clean another session's, and after committing check that
+  `git show --stat HEAD` lists your files and only yours. A detached worktree
+  holds no branch of its own, so it does not change the primary checkout's
+  branch.
 - **A commit saved early stays local until it is finished.** "wip" never
   reaches `main`. Before pushing, `git log origin/main..HEAD --format=%s` names
   no "wip", "TODO" or template placeholder.

@@ -8,6 +8,14 @@ meaning, minor for added rules or documents. Moving a file is major even when
 no rule changed: every fork's links break. A fork's merge conflicts are
 resolved in the fork's `decisions.md`, not here.
 
+## v0.6.0
+
+- `code-standards.md` and `loops/README.md` now carry magpie's exact worktree
+  rule and command: `git worktree add --detach`. A session works in its own
+  detached worktree, which holds no branch and does not switch the primary
+  checkout's branch; it never checks out, commits from or cleans another
+  session's worktree or logs.
+
 ## v0.5.0
 
 - Agent work now lands directly on `main` after lint and the full suite;

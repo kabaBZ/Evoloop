@@ -91,10 +91,12 @@ Pull requests are for community contributors. An agent's own change — loop 1's
 fix, loop 2's fix, loop 3's lesson, docs, cleanup or narrow security hardening
 — lands by a **direct push to `{{MAIN_BRANCH}}`**, not by opening a PR.
 
-1. **Work in your own worktree.** Fetch and rebase on current
-   `origin/{{MAIN_BRANCH}}` before the last test run. If the push is rejected,
-   fetch, rebase and run the checks again; never reuse a result from the old
-   head.
+1. **Work in your own worktree.** Create it detached with
+   `git worktree add --detach <path> origin/{{MAIN_BRANCH}}` so it holds no
+   branch and does not switch the primary checkout's branch. Fetch and rebase
+   on current `origin/{{MAIN_BRANCH}}` before the last test run. If the push is
+   rejected, fetch, rebase and run the checks again; never reuse a result from
+   the old head.
 2. **Run the code checks.** `{{LINT_CMD}}` and `{{FULL_TEST_CMD}}`. Record the
    exact commands and what they printed in the commit body. A check that was
    not run is listed as not run. If either fails, do not push; fix it first.
