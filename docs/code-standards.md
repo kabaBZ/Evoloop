@@ -29,7 +29,7 @@ addenda under [`standards/`](standards/); this file is language-neutral.
 
 | Rule | What a reviewer looks at |
 | --- | --- |
-| **A fix comes with a test that fails without it.** | Put the old code back and run the new test. It must fail with a real failure that names the behavior. A compile error or a skipped test does not count. The pull request says what it failed with. |
+| **A fix comes with a test that fails without it.** | Put the old code back and run the new test. It must fail with a real failure that names the behavior. A compile error or a skipped test does not count. The commit body (and the pull request, for community work) says what it failed with. |
 | **A test never reaches the network or a live service.** | A vendor's page or API is served from a local test server built from bytes saved from the real one. A package comes from a lock file, not a registry's latest. Break the change and watch where the test's requests go. |
 | **Tests use real inputs.** | Fixtures look like real requests, real serialized output and real files on disk. Include missing fields, empty values and defaults. Build fixtures from the reporter's literal bytes, not a similar sample you made up. |
 | **Tests check behavior, not implementation.** | Assert what the user or caller needs. Formatting changes and internal refactors should not break a test, unless exact bytes are the requirement. |
@@ -77,9 +77,9 @@ as not run, never left out.**
 6. **The project's own UI and interaction rules** hold. See
    [`standards/gui.md`](standards/gui.md) when present.
 
-A change is merged only after a maintainer (or the loop's reviewer) has pulled
-it, merged it onto current `main` and run the checks above on the result. The
-merge names the commit that was reviewed:
+A community change is merged only after a maintainer (or the loop's reviewer)
+has pulled it, merged it onto current `main` and run the checks above on the
+result. The merge names the commit that was reviewed:
 `{{MERGE_HEAD_LOCKED_CMD}}`. A push made during the review then stops the
 merge, rather than shipping code nobody ran. A head pushed after the review is
 reviewed again, and the record names the new head. Write on the pull request
@@ -126,8 +126,27 @@ are not evidence for it.
 6. **A new file is reachable.** It is linked from at least one document a
    reader starts from; an orphan file is invisible.
 
-Say in the PR which checks were run and what they printed. A docs change that
-was not link-checked is not verified.
+Say in the commit body (and in the pull request, for community work) which
+checks were run and what they printed. A docs change that was not link-checked
+is not verified.
+
+## Landing an agent change
+
+An agent's own change does not go through a pull request. It lands directly on
+`{{MAIN_BRANCH}}` after the same checks a reviewer would run:
+
+- it is rebased on current `origin/{{MAIN_BRANCH}}`;
+- `{{LINT_CMD}}` and `{{FULL_TEST_CMD}}` ran at that head, and the commit body
+  says what they printed;
+- `git show --stat HEAD` lists the files the change owns and no others;
+- no credential, generated binary, unrelated refactor or reversed decision
+  rides along;
+- the commit message is finished, not "wip" or a placeholder.
+
+Push it, then watch the CI run on that commit. A red commit is fixed forward in
+a new commit; never amend, rebase published history or force-push. A tag still
+waits for a green full run on the commit. The step-by-step version is in
+[`loops/README.md`](loops/README.md#how-agent-changes-land).
 
 ## Reviewing a pull request
 
@@ -192,9 +211,9 @@ Give the issue number or the reporter. The body says how it was verified, and
 which test fails without the change.
 
 - **The record of what was run is in the commit body**, where a later review
-  can read it: not in push notes, a chat, or only on the pull request. A large
-  commit with no body cannot be reviewed afterwards. A pointer to "the push"
-  is not a record.
+  can read it: not in push notes, a chat, or somewhere outside the commit. A
+  large commit with no body cannot be reviewed afterwards. A pointer to "the
+  push" is not a record.
 - **One commit has one goal.** Two reports fixed together are two commits,
   each with its own record, so a revert takes back one and keeps the other.
   A fix found on the way goes in a commit of its own.
@@ -220,8 +239,8 @@ which test fails without the change.
 
 ## A definition of done
 
-A change is ready when a reviewer can answer all of these from the pull
-request and the commit:
+A change is ready when a reviewer can answer all of these from the commit (and
+from the pull request, for community work):
 
 - What user-visible behavior changed, and what did not?
 - Which test fails without the change, and what did it print?

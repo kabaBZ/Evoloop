@@ -52,17 +52,22 @@ low-quality code.
 ## Where this base deliberately differs
 
 The originals assume a trusted agent with broad authority. A general base
-cannot assume that, so three points are changed on purpose. Keep the change
+cannot assume that, so several points are changed on purpose. Keep the change
 unless the fork has a better gate.
 
 | Original | This base | Why |
 | --- | --- | --- |
-| Loop 2 releases the fix itself (`上线后回复`) | Loop 2 opens a PR; loop 1 reviews, merges and releases; loop 2 replies with the version | One release authority. Loop 2 has no merge or tag token, so a social post can never publish unreviewed code. The reply waits for the release, which is the honest order. |
+| Loop 2 releases the fix itself (`上线后回复`) | Loop 2 commits the tested fix directly to `main`; loop 1 releases; loop 2 replies with the version | One release authority, so releases stay serialized. The fix still runs lint and the full suite before the push, and no agent opens a PR. The reply waits for the release, which is the honest order. |
 | Loop 3 blocks low-quality authors directly | Loop 3 appends evidence to the [block-list proposals table](../contributors.md#block-list-proposals); the maintainer decides | A block is irreversible and personal. An agent may collect evidence; it may not punish. |
 | Loop 3 runs "periodically" (`定时`) | Loop 3 runs nightly over a watermark window | A fixed window makes the review idempotent and auditable. The cadence is still a project choice; the watermark is what makes it safe. |
-| Loop 3 cleans up "shit mountain" code | Only behavior-preserving cleanup at night; a real refactor is a normal PR with a goal, tests and review | An unattended refactor is the fastest way to produce a huge diff no one reviewed. Refactors deserve a reviewer and a rollback plan, not a nightly agent. |
+| Loop 3 cleans up "shit mountain" code | Only behavior-preserving cleanup at night; lessons, docs, cleanup and narrow security hardening push directly to `main` after the checks; a real refactor is a normal agent change, not nightly cleanup | Checks, not a self-review, are the gate, and no agent opens a PR. An unattended wholesale refactor is still the fastest way to produce a huge diff no one planned; it gets its own goal, tests and rollback story. |
 | The canned reply is Chinese text | `{{CANNED_PARTNERSHIP_REPLY}}`, defaulted to English | Placeholders keep the base language-neutral. Keep the meaning: one reply, no third-party relay in the product. |
 | "Review every line, pull it, run it" | Same intent, made procedural: run at the reviewed head, record what ran, merge with a head lock | The original states the standard; the base adds the evidence that proves it was met. |
+
+One point is kept rather than changed: an agent's own fix lands directly on
+`main`, as in the original. The base makes the gate explicit — lint and the
+full suite before the push, CI on the pushed commit watched afterwards, a red
+commit fixed forward. Pull requests are for community contributors only.
 
 Loop 1's specifics are kept without reduction: reply even when declining, one
 canned reply for relay ads, never integrate them, real `@` mentions, every

@@ -8,6 +8,24 @@ meaning, minor for added rules or documents. Moving a file is major even when
 no rule changed: every fork's links break. A fork's merge conflicts are
 resolved in the fork's `decisions.md`, not here.
 
+## v0.5.0
+
+- Agent work now lands directly on `main` after lint and the full suite;
+  pull requests are for community contributors only. The agent watches CI on
+  the pushed commit and fixes a red forward; it never amends or force-pushes
+  published history.
+- Loop 2 no longer opens a PR: it commits the tested fix directly and loop 1
+  releases. Loop 3 may push lessons, docs, behavior-preserving cleanup and
+  narrow security hardening directly after the same checks; a real refactor
+  or behavior change is still not nightly cleanup.
+- This supersedes the v0.2.0 rule that loop 2 opens a PR. Checks before the
+  push are the gate; the pull-request entrance is for community contributors.
+- `bootstrap.md` branch protection now uses an actor-scoped bypass for the
+  agent identity. The bypass does not skip checks. `code-standards.md` and
+  `loops/README.md` define the direct-push procedure.
+- `release.md`: a release can follow an agent direct push, and the tag still
+  waits for a green full CI run on that commit.
+
 ## v0.4.0
 
 - Added [`docs/loops/originals.md`](loops/originals.md): the three original

@@ -14,7 +14,7 @@ tree had 10,206 paths and 9,686 blobs.
 | magpie source | Size | What it actually does | In this base |
 | --- | --- | --- | --- |
 | `CLAUDE.md` | 23 B | Two imports: `@AGENTS.md`, `@LESSONS.md` | `CLAUDE.md`, unchanged in shape |
-| `AGENTS.md` | 6,124 B | Routing table: which doc to read for which task; a short list of project facts and hard rules | `AGENTS.md`: routing table + ten invariants; product facts moved to placeholders |
+| `AGENTS.md` | 6,124 B | Routing table: which doc to read for which task; a short list of project facts and hard rules | `AGENTS.md`: routing table + eleven invariants; product facts moved to placeholders |
 | `LESSONS.md` | 75,640 B | Nightly wrong-answer ledger: rule, why, evidence, `Seen N×`; promotion at 3 distinct days; "Done right"; "Moved to the code standards"; criteria-still-missed lists | `LESSONS.md`: same mechanism, empty ledger, entry format, nightly checklist |
 | `docs/code-standards.md` | 22,486 B | Change rules, test rules, 6 acceptance criteria, review patterns, commit and merge rules | `docs/code-standards.md`: same rule classes, language-neutral wording, addenda pointers |
 | `docs/contributors.md` | 6,366 B | Harm check before review; close-without-review list; credit rules; five block criteria (agent proposes, maintainer decides); blocked/extra-care/watched tables | `docs/contributors.md`: same structure, vendors and paths generalized |
@@ -41,8 +41,8 @@ this base on 2026-11-13 and transcribed verbatim in
 | Loop | What the original asks | This base |
 | --- | --- | --- |
 | 1. GitHub + Discord | Triage issues (fix or decline, reply either way); review PRs line by line and actually run them; fix → release → reply; one canned reply for relay/reseller ads; read every channel, real @ mentions | `1-github-and-community.md` |
-| 2. X/Twitter | A cheap decision model filters "is this about the project / is it feedback" before the main model; fix reproducible feedback, ship it, then reply to the post | `2-social-feedback.md` — opens a PR and lets loop 1 release; a deliberate divergence |
-| 3. Nightly | Clean up messy and malicious code; write lessons (which PRs shouldn't merge, which verification was thin); block authors who keep sending low-quality code | `3-nightly-review.md` — nightly watermark window; proposes block evidence, the maintainer decides |
+| 2. X/Twitter | A cheap decision model filters "is this about the project / is it feedback" before the main model; fix reproducible feedback, ship it, then reply to the post | `2-social-feedback.md` — commits the tested fix directly to `main` and lets loop 1 release; a deliberate divergence |
+| 3. Nightly | Clean up messy and malicious code; write lessons (which PRs shouldn't merge, which verification was thin); block authors who keep sending low-quality code | `3-nightly-review.md` — nightly watermark window; lessons, docs, behavior-preserving cleanup and narrow security hardening push directly to `main` after checks; proposes block evidence, the maintainer decides |
 
 What the public descriptions add beyond the repository, and what this base
 keeps:

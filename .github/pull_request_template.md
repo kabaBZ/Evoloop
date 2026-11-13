@@ -1,3 +1,6 @@
+<!-- For community pull requests. Agent work lands directly on the main branch
+     after lint and the full suite, and does not use this template. -->
+
 ## What changed
 
 <!-- One paragraph. The user-visible behavior before and after, and the issue

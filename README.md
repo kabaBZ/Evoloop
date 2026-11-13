@@ -135,7 +135,9 @@ away without replacing them with something stronger:
 - **A check that was not run is listed as not run.** Never omitted, never
   implied.
 - **A fix reaches every sibling.** Grep for the same pattern before shipping.
-- **Merge only the reviewed head.** A push during review invalidates it.
+- **Agent work lands directly on `main` after lint and the full suite; pull
+  requests are for community contributors.** A community PR merges only at the
+  reviewed head; a push during review invalidates it.
 - **A tag waits for a green CI run on that commit.** A cancelled run is not a
   pass.
 - **Defaults never override what the user set.** Read every place the setting

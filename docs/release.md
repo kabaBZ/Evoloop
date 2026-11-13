@@ -6,9 +6,12 @@ process must be boring, checkable and safe to repeat.
 
 ## Before the tag
 
-- [ ] The change is merged on `{{MAIN_BRANCH}}`.
+- [ ] The change is on `{{MAIN_BRANCH}}`: an agent's direct push after the
+      checks, or a merged community PR.
 - [ ] The full suite ran green **on that commit**, not on the branch before
-      the last merge.
+      the last merge. A direct push does not skip this gate: lint and the full
+      suite ran before the push, and the CI run on the pushed commit is the
+      record.
 - [ ] The check that fails without the fix was run and its output recorded.
 - [ ] [`CHANGELOG.md`](../CHANGELOG.md) has an entry for this version, naming
       every user-visible change with issue numbers.
@@ -51,8 +54,8 @@ git tag {{TAG_PREFIX}}<version> <sha>
 git push origin {{TAG_PREFIX}}<version>
 ```
 
-If the run turns red between the merge and the tag, do not tag. Fix, run
-again, tag the fixed commit.
+If the run turns red between the push and the tag, do not tag. Fix, run again,
+tag the fixed commit.
 
 ## Publish
 

@@ -62,14 +62,19 @@ you, the documents are incomplete.
   base's text is in git history and the fork steps are here, so the replacement
   loses nothing. Leave no "this is a template" notice behind; if an agent can
   still read it, bootstrap is unfinished.
-- Protect `{{MAIN_BRANCH}}`: no force-push, no deletion, required CI. If the
-  nightly loop commits lessons and docs directly, give its bot an allowlist
-  entry limited to `LESSONS.md` and `docs/`; code changes still go through a
-  pull request. If the platform cannot scope a bypass, the nightly loop opens
-  a PR like everyone else.
-- Add the secrets the loops need (a token that can comment, merge and release;
-  the community bot; the social API). Scope each token to what its loop does.
-  Never give loop 2 a merge token.
+- Protect `{{MAIN_BRANCH}}`: no force-push, no deletion. Community changes
+  arrive as a pull request and pass required CI. Agent work lands directly:
+  give the agent identity an **actor-scoped bypass of the pull-request
+  requirement**, never a general bypass for the branch. The bypass does not
+  remove the checks — before pushing, the agent runs `{{LINT_CMD}}` and
+  `{{FULL_TEST_CMD}}`; after pushing, it watches the CI run on that commit and
+  fixes a red forward. If the platform cannot scope a bypass to one actor, do
+  not open agent PRs as a workaround: fix the ruleset, or record the exception
+  in [`decisions.md`](decisions.md).
+- Add the secrets the loops need (a token that can push `{{MAIN_BRANCH}}`,
+  comment, merge community PRs and release; the community bot; the social
+  API). Scope each token to what its loop does. Loop 2 and loop 3 may push a
+  tested fix, but never get a release or tag token.
 - Turn on branch protection for the release tag if the platform supports it.
 - Add the issue templates and the PR template from `.github/`.
 - Add `SECURITY.md` naming `{{PRIVATE_SECURITY_CHANNEL}}`, and keep
@@ -103,9 +108,9 @@ file empty and let the first nightly review write.
 
 1. **Week 1 — loop 1, triage only.** It may reply and label, not merge and not
    release. Read every report. Fix the prompt, not the agent.
-2. **Week 2 — loop 1, full.** Add fix, review and release. Watch the rework
-   rate: a change that needs a second fix in the same week is a lesson, not an
-   accident.
+2. **Week 2 — loop 1, full.** Add direct push, community review and release.
+   Watch the rework rate: a change that needs a second fix in the same week is
+   a lesson, not an accident.
 3. **Week 3 — loop 3.** Turn on the nightly review. It will mostly write
    lessons at first. That is the point.
 4. **Week 4 — loop 2.** Add social only when the release path is boring. A
@@ -113,7 +118,8 @@ file empty and let the first nightly review write.
    silence.
 
 Add the second loop only after the first has a week with no release tagged
-before green, no merge of an unreviewed head, and no lesson repeated twice.
+before green, no community PR merged at an unreviewed head, and no lesson
+repeated twice.
 
 ## 6. Verify the base itself
 
@@ -123,6 +129,11 @@ Before trusting it, run these checks by hand:
   above, and every token in the table appears somewhere outside it. A token
   used and never defined is a guess; a token defined and never used is dead
   weight.
+- **Direct push is real.** The agent identity can push to
+  `{{MAIN_BRANCH}}`, and a push from any other account still needs a PR. Run
+  one tiny agent commit through the path and watch the CI run on that commit;
+  a branch protection setting that silently blocks the agent, or silently
+  lets everyone bypass, is not finished.
 - **Link audit.** Every relative link resolves, and every `#anchor` names a
   heading that exists.
 - `CLAUDE.md` imports only `AGENTS.md` and `LESSONS.md`, and both exist.

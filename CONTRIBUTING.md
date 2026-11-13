@@ -1,7 +1,8 @@
 # Contributing
 
 This project is maintained by agents under a human maintainer. The rules are
-written for both.
+written for both. Agents land their own changes directly on the main branch
+after lint and the full suite; pull requests are the human contributor path.
 
 ## Before you open a pull request
 

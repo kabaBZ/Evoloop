@@ -16,6 +16,7 @@ that owns it.
 | Before you… | Read |
 | --- | --- |
 | Change any code | [`LESSONS.md`](LESSONS.md), then [`docs/code-standards.md`](docs/code-standards.md) |
+| Land a change you wrote (agent work) | [`docs/loops/README.md`](docs/loops/README.md#how-agent-changes-land) — direct push, no PR |
 | Change a documented subsystem | [`docs/subsystems/README.md`](docs/subsystems/README.md), then the subsystem's page |
 | Review, close or merge a community PR | [`docs/contributors.md`](docs/contributors.md) — the harm check comes first |
 | Tag or release | [`docs/release.md`](docs/release.md) and acceptance criteria in the code standards |
@@ -31,7 +32,9 @@ that owns it.
 {{PROJECT_NAME}} is written, reviewed, merged and released by agents. A human
 maintains direction, taste and the gates listed in
 [`docs/decisions.md`](docs/decisions.md). The project's purpose and non-goals
-are in [`docs/project-brief.md`](docs/project-brief.md).
+are in [`docs/project-brief.md`](docs/project-brief.md). Agent work lands
+directly on `{{MAIN_BRANCH}}` after the checks; pull requests are the
+community contributors' entrance.
 
 The build, test and release commands are in
 [`docs/bootstrap.md`](docs/bootstrap.md); do not guess them.
@@ -42,8 +45,8 @@ These override convenience. A change that breaks one is not merged, no matter
 how green it looks.
 
 1. **Read `LESSONS.md` before changing code.** Every lesson there was paid for
-   by a real regression. If a rule applies, say in the PR which one and how
-   the change satisfies it.
+   by a real regression. If a rule applies, say in the commit body (or in the
+   pull request, for community work) which one and how the change satisfies it.
 2. **"Fixed" means reproduced and verified on the reporter's surface.** Their
    OS, their build, their agent or client, their data. Not a nearby case, not
    a unit test alone.
@@ -51,18 +54,25 @@ how green it looks.
    described as passing.
 4. **A fix reaches every sibling of the bug.** Search for the same pattern
    across the repository before shipping.
-5. **Merge only the head that was reviewed.** Name the reviewed commit and
-   what was run in the merge record. Use the project's head-locked merge.
-6. **A tag waits for a green full CI run on that commit.** A run cancelled by
+5. **Agent work lands directly on `{{MAIN_BRANCH}}`; pull requests are for
+   community contributors.** Before the push, rebase on current
+   `origin/{{MAIN_BRANCH}}`, run `{{LINT_CMD}}` and `{{FULL_TEST_CMD}}`, and
+   check `git show --stat HEAD` lists your files and only yours. After the
+   push, watch CI on that commit; a red commit is fixed forward in a new
+   commit, never by force-push. An agent does not open a PR for its own work.
+6. **A community PR merges only at the head that was reviewed.** Name the
+   reviewed commit and what was run in the merge record. Use the project's
+   head-locked merge.
+7. **A tag waits for a green full CI run on that commit.** A run cancelled by
    a later push is not a pass.
-7. **Deliberate decisions are not reversed.** If it is written in
+8. **Deliberate decisions are not reversed.** If it is written in
    `docs/decisions.md` or was asked for by the maintainer, a drive-by PR does
    not change it.
-8. **A community PR gets the harm check before any quality review.** A hit
+9. **A community PR gets the harm check before any quality review.** A hit
    stops the review until the maintainer clears it.
-9. **Never expose, copy or transmit a credential.** No new network address, no
-   upload, no telemetry, no credential file access outside the goal.
-10. **When a lesson has been seen on three separate days, promote it.** Move
+10. **Never expose, copy or transmit a credential.** No new network address, no
+    upload, no telemetry, no credential file access outside the goal.
+11. **When a lesson has been seen on three separate days, promote it.** Move
     it into `docs/code-standards.md` in the same nightly review, and leave a
     link in `LESSONS.md`.
 
