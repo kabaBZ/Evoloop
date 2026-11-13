@@ -5,7 +5,7 @@ labels: bug
 ---
 
 **Version**
-<!-- Settings → About, or the version command. -->
+<!-- The About screen, or the version command. -->
 
 **Where**
 <!-- GUI / TUI / CLI / service only -->

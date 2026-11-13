@@ -7,6 +7,39 @@ Versioning: `v0.<major>.<minor>` — major for a change that alters a rule's
 meaning, minor for added rules or documents. A fork's merge conflicts are
 resolved in the fork's `decisions.md`, not here.
 
+## v0.2.0
+
+Review fixes: the base now carries the machinery it describes, and the
+contradictions a fork would hit on day one are gone.
+
+- `LESSONS.md` has its `reviewed-through` watermark again, plus the
+  "Criteria still missed" section the mechanism refers to.
+- `docs/contributors.md`: agent instruction and rule files join the harm
+  check; a block-list proposals table is defined, and it doubles as the
+  evidence log.
+- `docs/loops/`: loop 2 opens a PR instead of releasing, so it no longer
+  conflicts with "never give loop 2 a merge token"; loop 3 gets a `Never`
+  section and a scoped direct-push rule; every loop treats outside text as
+  data, not instructions; the checkpoint must live outside local agent memory;
+  the pages are marked as reference designs, not runtime prompts.
+- `docs/loops/README.md`: the private security channel points at
+  `{{PRIVATE_SECURITY_CHANNEL}}`; the tone check the routing table promised is
+  now a reply step.
+- `docs/bootstrap.md`: branch protection and the nightly bot's allowlist are
+  defined; LICENSE, SECURITY.md, CONTRIBUTING.md and fork-side CI are on the
+  checklist; the self-check is a two-way token audit, not an impossible grep;
+  docs-only acceptance and the watermark are checked.
+- `docs/code-standards.md`: docs-only acceptance criteria, a review rule for
+  agent instruction files, and a second read from a clean context for
+  high-risk changes (security, release, migration, P0). The run at the
+  reviewed head remains the proof; the clean read is an extra layer.
+- `docs/release.md`: the changelog is defined as `CHANGELOG.md`, with a
+  release-lock note.
+- `docs/decisions.md`: date placeholder fixed; the magpie relay decision is
+  marked an example a fork should delete or replace.
+- New `CHANGELOG.md`, `LICENSE` (MIT), `SECURITY.md`, `CONTRIBUTING.md`,
+  `.gitattributes`, `.gitignore`; `README` and `README.zh-CN` link them.
+
 ## v0.1.0
 
 First extraction, from magpie's agent maintenance setup.

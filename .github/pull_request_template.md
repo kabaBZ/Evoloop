@@ -33,6 +33,7 @@ Closes #
   <command> → <result>
   ```
 - Platforms run: <!-- list; do not list a platform you only cross-built -->
+- Docs checks (docs-only changes): <!-- links, anchors, placeholders, tables -->
 
 ## What was not run
 

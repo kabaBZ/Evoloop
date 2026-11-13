@@ -1,3 +1,5 @@
+<!-- reviewed-through: none -->
+
 # Lessons from merged work
 
 {{PROJECT_NAME}}'s code is written, reviewed, merged and released by agents.
@@ -71,6 +73,15 @@ seen on 3 or more separate days moves into
 ## Merging and closing
 
 *(No entries yet.)*
+
+## Criteria still missed
+
+A rule that is already in the code standards and was missed again is recorded
+here, not re-added as a new lesson: the date, the change that missed it, and
+the guard test or named check added. This section stays visible after the
+original entry is deleted, so a repeated miss cannot hide behind a promotion.
+
+- *(none yet)*
 
 ## Moved to the code standards
 

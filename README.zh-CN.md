@@ -22,7 +22,11 @@
 CLAUDE.md                  只 import 两个文件
 AGENTS.md                  路由表：干什么活之前读哪份文档
 LESSONS.md                 错题本：规则 + 原因 + 证据 + Seen N×
+CHANGELOG.md               产品更新日志模板（每个版本一条）
 BASE-CHANGELOG.md          底座自己的版本和变更，fork 回并时看这个
+LICENSE                    默认 MIT；要换宽松协议就改这里
+SECURITY.md                安全问题走私密渠道，别开公开 issue
+CONTRIBUTING.md            人类贡献者开口前先看这个
 docs/
   bootstrap.md             开 fork 的清单，所有 {{占位符}}
   project-brief.md         产品是什么、给谁用、拒绝做什么
@@ -34,7 +38,7 @@ docs/
   agents-memory.md         本地记忆和仓库文档怎么分工
   subsystems/              子系统文档的写法和模板
   standards/               语言/UI 附加规则（go.md、gui.md 是示例）
-  loops/                   三条循环的完整提示词
+  loops/                   三条循环的参考提示词（按项目改，不要照抄）
   extraction-map.md        magpie 文件 → 本仓库的对照表
 ```
 
@@ -79,7 +83,13 @@ docs/
   复盘/计数/升级机制、六条验收标准、社区 PR 的查害和署名规则、发布闸门。
 - 通用化：语言、平台、命令、供应商、发布方式全部变成占位符；Go/GUI 细节放进
   `docs/standards/` 当示例，不当普适规则。
-- 没抄：magpie 的产品架构、provider 表、17 个子系统页、把 release 转发到第二个仓库、
+- 没抄：magpie 的产品架构、provider 表、子系统页、把 release 转发到第二个仓库、
   以及三个 loop 的原始提示词（官方没公开，这里是按公开描述重建并通用化的）。
+  这三份 loop 文档是**参考设计，不是能直接跑的提示词**；每个项目要按自己的命令、
+  入口和 checkpoint 存放位置改写，只保留安全底线。
 
 细节和逐文件对照见 [`docs/extraction-map.md`](docs/extraction-map.md)。
+
+底座自身的文件：[English README](README.md)、[BASE-CHANGELOG.md](BASE-CHANGELOG.md)、
+[CHANGELOG.md](CHANGELOG.md)、[LICENSE](LICENSE)、[SECURITY.md](SECURITY.md)、
+[CONTRIBUTING.md](CONTRIBUTING.md)。

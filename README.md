@@ -66,7 +66,11 @@ CLAUDE.md                     entry point: imports AGENTS.md and LESSONS.md
 AGENTS.md                     routing table and hard invariants
 LESSONS.md                    living wrong-answer notebook (mechanism + ledger)
 README.md / README.zh-CN.md   what this base is; 中文说明
+CHANGELOG.md                  product changelog template; one entry per version
 BASE-CHANGELOG.md             what changed in the base; a fork reads this
+LICENSE                       MIT by default; replace it if you choose another
+SECURITY.md                   how to report a vulnerability privately
+CONTRIBUTING.md               what a human contributor needs before a PR
 docs/
   bootstrap.md                fork checklist; every placeholder token
   project-brief.md            product, users, non-goals, constraints
@@ -97,6 +101,8 @@ docs/
 
 Direct links for the files a fork touches first:
 [中文说明](README.zh-CN.md), [BASE-CHANGELOG.md](BASE-CHANGELOG.md),
+[product changelog template](CHANGELOG.md), [license](LICENSE),
+[security policy](SECURITY.md), [contributing](CONTRIBUTING.md),
 [language addendum template](docs/standards/language-addendum-template.md),
 [Go addendum](docs/standards/go.md), [GUI addendum](docs/standards/gui.md).
 
@@ -143,8 +149,9 @@ This base intentionally leaves out:
 - the release fan-out to a second repository, which is a magpie deployment
   choice;
 - the exact loop prompts, which were never published. The prompts here are
-  reconstructed from public descriptions and generalized; treat them as a
-  starting point, not scripture.
+  reconstructed from public descriptions and generalized; they are **reference
+  designs, not runtime prompts** — adapt each one to the project's commands,
+  surfaces and checkpoint store.
 
 See [`docs/extraction-map.md`](docs/extraction-map.md) for the exact mapping
 and what was generalized, kept, or dropped.

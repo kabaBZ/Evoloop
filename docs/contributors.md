@@ -10,6 +10,10 @@ to review than it gives is stopped.
 Before running a PR, read its diff for anything that reaches past its stated
 goal. Any one of these **stops the review** until the maintainer has looked:
 
+- It changes an agent instruction or rule file: `AGENTS.md`, `CLAUDE.md`,
+  `LESSONS.md`, `docs/code-standards.md`, `docs/decisions.md`, `docs/loops/`,
+  or a template under `.github/`. These are the maintainer's; the change stops
+  the review like any other harm hit.
 - It changes CI configuration, release or publish scripts, the dependency
   manifest's resolution rules, infrastructure manifests, or the documentation
   site.
@@ -34,6 +38,9 @@ Close with a short reason, without running it, a PR that:
 - changes what the maintainer has ruled on (see "Don't reverse deliberate
   decisions" in [`code-standards.md`](code-standards.md)), including files
   the maintainer keeps byte for byte;
+- changes an agent instruction or rule file (`AGENTS.md`, `CLAUDE.md`,
+  `LESSONS.md`, `docs/code-standards.md`, `docs/decisions.md`, `docs/loops/`,
+  or a `.github/` template) that the maintainer did not ask for;
 - is a resubmission of a PR closed for its idea, with nothing new to answer
   the reason it was closed;
 - is one of several near-identical PRs opened seconds apart;
@@ -75,6 +82,21 @@ accepted in this repository." Nothing more is argued.
 An author being watched (one or two low-value PRs, no pattern yet) gets a
 normal review; the reviewer notes the PR under "Watched" if it is low-value
 too.
+
+## Block-list proposals
+
+An agent that believes an author meets a rule above writes a proposal here.
+It never blocks, closes an account or posts the block message itself. A
+proposal is evidence, not a verdict; the maintainer fills the last column.
+
+| Date | Author | Rule | Evidence | Decision |
+| --- | --- | --- | --- | --- |
+| *(none yet)* | | | PR/issue links, dates, what was wrong | *(maintainer)* |
+
+This table is also the **evidence log**. A relay, reseller or affiliate ad
+gets a row with "ad" in the Rule column; an author being watched gets a row
+with "watch". A row with no rule and no link is a note, not a proposal. Loop 3
+reads this section; loop 1 and loop 2 append to it.
 
 ## Lists
 

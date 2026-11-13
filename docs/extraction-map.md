@@ -16,7 +16,7 @@ tree had 10,206 paths and 9,686 blobs.
 | `CLAUDE.md` | 23 B | Two imports: `@AGENTS.md`, `@LESSONS.md` | `CLAUDE.md`, unchanged in shape |
 | `AGENTS.md` | 6,124 B | Routing table: which doc to read for which task; a short list of project facts and hard rules | `AGENTS.md`: routing table + ten invariants; product facts moved to placeholders |
 | `LESSONS.md` | 75,640 B | Nightly wrong-answer ledger: rule, why, evidence, `Seen N×`; promotion at 3 distinct days; "Done right"; "Moved to the code standards"; criteria-still-missed lists | `LESSONS.md`: same mechanism, empty ledger, entry format, nightly checklist |
-| `docs/code-standards.md` | 22,486 B | 9 change rules, 9 test rules, 6 acceptance criteria, review patterns, commit and merge rules | `docs/code-standards.md`: same rule classes, language-neutral wording, addenda pointers |
+| `docs/code-standards.md` | 22,486 B | Change rules, test rules, 6 acceptance criteria, review patterns, commit and merge rules | `docs/code-standards.md`: same rule classes, language-neutral wording, addenda pointers |
 | `docs/contributors.md` | 6,366 B | Harm check before review; close-without-review list; credit rules; five block criteria (agent proposes, maintainer decides); blocked/extra-care/watched tables | `docs/contributors.md`: same structure, vendors and paths generalized |
 | `docs/subsystems/README.md` | 4,526 B | What a subsystem reference contains; when to update it; how to describe a change; four review steps | `docs/subsystems/README.md`, plus `_template.md` |
 | `docs/subsystems/*.md` (17 pages) | — | Project-specific design references (routing, plugins, memory, GUI, sync…) | Not copied. `_template.md` captures the shape; each fork writes its own |
@@ -76,7 +76,11 @@ keeps:
 
 - **Product architecture and provider tables.** Useless outside magpie and
   actively misleading in another project.
-- **The 17 subsystem pages.** Their *shape* is reusable; their content is not.
+- **The subsystem pages.** Their *shape* is reusable; their content is not.
+  This includes magpie's product Memory feature (`docs/subsystems/memory.md`:
+  `memory.json`, the MCP server, the injected digest). It is a feature the
+  product ships, not a constraint on the coding agent; agent-side memory is
+  covered by [`agents-memory.md`](agents-memory.md).
 - **The release fan-out to a second repository.** A deployment choice.
 - **The exact nightly-review trigger and prompts.** Not public; reconstructed.
 - **The block list entries and the named authors.** Personal and

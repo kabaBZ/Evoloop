@@ -1,5 +1,10 @@
 # Notes for coding agents
 
+> **This repository is a template.** The double-brace placeholders (such as
+> `PROJECT_NAME`) are intentional. Fill
+> them by following [`docs/bootstrap.md`](docs/bootstrap.md); never replace one
+> as a drive-by "fix", and never delete the paragraph that explains them.
+
 This file is a **routing table**. It holds no rules of its own except the
 invariants at the bottom. Before doing a kind of work, read the document
 that owns it.
@@ -15,6 +20,8 @@ that owns it.
 | Choose a default, a behavior, a layout or a dependency | [`docs/decisions.md`](docs/decisions.md) and [`docs/project-brief.md`](docs/project-brief.md) |
 | Reproduce a user's report | [`docs/environments.md`](docs/environments.md) |
 | Open or run an autonomous loop | [`docs/loops/README.md`](docs/loops/README.md) |
+| Set up a fork, fill placeholders, or start the loops | [`docs/bootstrap.md`](docs/bootstrap.md) |
+| See what changed in the base itself | [`BASE-CHANGELOG.md`](BASE-CHANGELOG.md) |
 | Record a lesson, promote a rule, or run the nightly review | [`LESSONS.md`](LESSONS.md) |
 
 ## What this repository is

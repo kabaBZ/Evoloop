@@ -37,16 +37,23 @@ feature.
 - **Alternatives:** <what was considered and why it lost.>
 - **Do not reverse:** <what a future change must not do.>
 - **Owner:** <who decided.>
-- **Date:** <YYYY-MM-DD.>
+- **Date:** <YYYY-MM-DD>
 - **Supersedes:** <link, if any.>
 ```
 
 Keep entries in the order they were decided. When a decision changes, add a
 new entry and mark the old one `Superseded by <link>`; do not rewrite history.
 
+Entries marked **Example** are illustrations taken from the base's source
+project. Delete or replace them in a fork; they are not decisions this project
+made.
+
 ## Product
 
-### The project does not route user traffic through its own servers
+### Example — the project does not route user traffic through its own servers
+
+> Example from magpie. Keep it only if the fork makes the same promise;
+> otherwise delete the entry.
 
 - **Decision:** Every request goes from the user's machine to the vendor, or
   to a server the user runs. The project ships no relay.
@@ -58,7 +65,7 @@ new entry and mark the old one `Superseded by <link>`; do not rewrite history.
 - **Do not reverse:** Do not add a default endpoint that is not the user's.
   Do not add a reseller or affiliate address.
 - **Owner:** maintainer.
-- **Date:** <YYYY-MM-DD.>
+- **Date:** <YYYY-MM-DD>
 
 ### A feature that cannot be undone does not ship without a way back
 
@@ -71,7 +78,7 @@ new entry and mark the old one `Superseded by <link>`; do not rewrite history.
 - **Do not reverse:** Do not remove the last way back in the same change that
   adds the new path.
 - **Owner:** maintainer.
-- **Date:** <YYYY-MM-DD.>
+- **Date:** <YYYY-MM-DD>
 
 ## Defaults
 
@@ -86,7 +93,7 @@ new entry and mark the old one `Superseded by <link>`; do not rewrite history.
 - **Do not reverse:** Do not add a bulk rewrite of a setting without naming
   the users who set it themselves and what they lose.
 - **Owner:** maintainer.
-- **Date:** <YYYY-MM-DD.>
+- **Date:** <YYYY-MM-DD>
 
 ### A failed read means "unknown", never "empty"
 
@@ -97,7 +104,7 @@ new entry and mark the old one `Superseded by <link>`; do not rewrite history.
 - **Do not reverse:** Do not let a guard treat an unreadable input as an
   allow.
 - **Owner:** maintainer.
-- **Date:** <YYYY-MM-DD.>
+- **Date:** <YYYY-MM-DD>
 
 ## Compatibility
 
@@ -108,7 +115,7 @@ new entry and mark the old one `Superseded by <link>`; do not rewrite history.
 - **Alternatives:** <a clean break, and why not.>
 - **Do not reverse:** <what a migration must not do.>
 - **Owner:** maintainer.
-- **Date:** <YYYY-MM-DD.>
+- **Date:** <YYYY-MM-DD>
 
 ## Security and privacy
 
@@ -120,7 +127,7 @@ new entry and mark the old one `Superseded by <link>`; do not rewrite history.
 - **Do not reverse:** Do not add a network call that sends user data without
   updating this entry and every disclosure.
 - **Owner:** maintainer.
-- **Date:** <YYYY-MM-DD.>
+- **Date:** <YYYY-MM-DD>
 
 ## Taste
 

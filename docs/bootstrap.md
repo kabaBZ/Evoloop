@@ -7,9 +7,10 @@ unverified.
 
 ## 1. Fill the placeholders
 
-Every `{{TOKEN}}` in the repository must be replaced. `grep -rn '{{' .` lists
-them. The table is the contract; if a token is not listed here, it is a bug in
-the base.
+Every `{{TOKEN}}` in the repository must be replaced in a fork. `grep -rn
+'{{' .` lists them. The table is the contract; if a token is not listed here,
+it is a bug in the base. Tokens are expected to remain in the base itself:
+that is how it stays generic.
 
 | Token | Meaning | Example |
 | --- | --- | --- |
@@ -57,15 +58,28 @@ you, the documents are incomplete.
 ## 3. Set the repository up
 
 - Make this repository a **template repository**, so forks start from it.
-- Protect `{{MAIN_BRANCH}}`: no force-push, no deletion, required CI.
+- Protect `{{MAIN_BRANCH}}`: no force-push, no deletion, required CI. If the
+  nightly loop commits lessons and docs directly, give its bot an allowlist
+  entry limited to `LESSONS.md` and `docs/`; code changes still go through a
+  pull request. If the platform cannot scope a bypass, the nightly loop opens
+  a PR like everyone else.
 - Add the secrets the loops need (a token that can comment, merge and release;
   the community bot; the social API). Scope each token to what its loop does.
   Never give loop 2 a merge token.
 - Turn on branch protection for the release tag if the platform supports it.
 - Add the issue templates and the PR template from `.github/`.
+- Add `SECURITY.md` naming `{{PRIVATE_SECURITY_CHANNEL}}`, and keep
+  `CONTRIBUTING.md` pointing humans at [`contributors.md`](contributors.md) and
+  the PR template.
+- Add a `LICENSE`. The base ships MIT as a default; replace it if the
+  maintainer chooses another permissive license, and name the copyright holder
+  in the file.
+- Add CI for the fork. This base ships no workflow because it is
+  language-neutral: wire `{{LINT_CMD}}`, `{{TEST_CMD}}` and
+  `{{FULL_TEST_CMD}}` into `{{CI_PROVIDER}}`.
 - Create the environments: at least one machine per platform in
-  `{{PLATFORMS}}`, plus a spare for a full suite so two loops don't run one at
-  a time.
+  `{{PLATFORMS}}`, plus a spare so two loops don't run the full suite at the
+  same time.
 - Seed the agent's local memory with pointers, not copies: one entry per
   entry point (brief, decisions, code standards, subsystem index, release,
   environments, test command). The procedure is in
@@ -101,14 +115,22 @@ before green, no merge of an unreviewed head, and no lesson repeated twice.
 
 Before trusting it, run these checks by hand:
 
-- `grep -rn '{{' .` returns nothing outside this table. This table is the
-  only place the tokens stay, so it can be used again when the base is
-  updated.
-- Every link in every document resolves.
+- **Token audit.** Every `{{TOKEN}}` used anywhere is defined in the table
+  above, and every token in the table appears somewhere outside it. A token
+  used and never defined is a guess; a token defined and never used is dead
+  weight.
+- **Link audit.** Every relative link resolves, and every `#anchor` names a
+  heading that exists.
 - `CLAUDE.md` imports only `AGENTS.md` and `LESSONS.md`, and both exist.
-- Each loop prompt names its checkpoint, its gates and its report.
-- `LESSONS.md`'s promotion rule is stated in exactly one place and referenced
-  from the others.
+- Each loop document names its checkpoint, its gates, its report and its
+  `Never` section.
+- `LESSONS.md` states the promotion rule once as the canonical definition;
+  other documents reference or restate it. When the rule changes, every
+  restatement changes in the same commit.
+- `LESSONS.md` has a `reviewed-through` watermark (`none` before the first
+  review), and loop 3 names it.
+- A documentation-only change passes the criteria in
+  [`code-standards.md`](code-standards.md#docs-only-changes).
 - A new agent, given only `CLAUDE.md`, can answer: where do I read before a
   code change, how do I verify, what may I merge, and what do I never do.
 

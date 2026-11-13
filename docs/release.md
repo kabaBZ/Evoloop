@@ -10,7 +10,8 @@ process must be boring, checkable and safe to repeat.
 - [ ] The full suite ran green **on that commit**, not on the branch before
       the last merge.
 - [ ] The check that fails without the fix was run and its output recorded.
-- [ ] The changelog names every user-visible change, with issue numbers.
+- [ ] [`CHANGELOG.md`](../CHANGELOG.md) has an entry for this version, naming
+      every user-visible change with issue numbers.
 - [ ] The version is free: fetch tags and check the commit is not already
       tagged. Releases can be made from more than one place.
 - [ ] A hard-to-reverse change has a rollback story, tested once.
@@ -24,7 +25,22 @@ process must be boring, checkable and safe to repeat.
   breaking change increments the major and gets a migration note.
 - A version is reserved when it is tagged, not when it is planned. Two loops
   must not pick the same version: check the remote tags immediately before
-  tagging, and tag with the remote as the source of truth.
+  tagging, and tag with the remote as the source of truth. If two processes
+  can tag, they take a lock ref first; checking tags is a check, not a lock.
+
+## Changelog
+
+The changelog is [`CHANGELOG.md`](../CHANGELOG.md) at the repository root. One
+entry per version, newest first: version, date, then the user-visible changes
+with issue or PR numbers. Internal refactors, test-only changes and dependency
+bumps with no user-visible effect get no line. The entry is written in the same
+commit that bumps the version, before the tag.
+
+A project that generates release notes from merged PRs still keeps the file:
+the release body is written for the moment, the changelog is what a user reads
+three versions later. The base's own changes are in
+[`BASE-CHANGELOG.md`](../BASE-CHANGELOG.md); that file is not the product
+changelog.
 
 ## Tag
 

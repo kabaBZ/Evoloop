@@ -103,6 +103,32 @@ instead of letting the next tag cover it. Publish in tag order, or pass the
 "latest" flag only to the newest version; a later publish of an older version
 takes Latest with it. See [`release.md`](release.md).
 
+## Docs-only changes
+
+A change that touches only documentation — `README*`, `docs/`, `LESSONS.md`,
+`AGENTS.md` or a template — has its own acceptance. Build and test commands
+are not evidence for it.
+
+1. **Links resolve.** Every relative link points at an existing file, and
+   every `#anchor` names a heading that exists. Check the Markdown links in
+   the whole change, not only the new ones.
+2. **Placeholders are consistent.** Every `{{TOKEN}}` used is defined in
+   [`bootstrap.md`](bootstrap.md), and a token the change introduces is added
+   to that table.
+3. **One rule, one canonical statement.** A rule lives in one owning document;
+   other documents link to it or restate it inside a prompt. A change that
+   edits the rule edits every restatement in the same commit.
+4. **No stale reference.** A removed file, section or command is removed from
+   every document that named it. Search for its name before shipping.
+5. **Tables and fences render.** A table row has the same number of cells as
+   its header, every fence is closed, and no line breaks the table in the
+   repository's renderer.
+6. **A new file is reachable.** It is linked from at least one document a
+   reader starts from; an orphan file is invisible.
+
+Say in the PR which checks were run and what they printed. A docs change that
+was not link-checked is not verified.
+
 ## Reviewing a pull request
 
 These patterns come from recent reviews. A reviewer checks each one that
@@ -111,6 +137,14 @@ applies:
 - **Run it.** Pull the head, merge it onto current `main` (resolving conflicts
   if needed) and run the acceptance checks. Reading the diff alone isn't a
   review.
+- **A high-risk change gets a second read from a context that did not write
+  it.** Security fixes, release or migration tooling, data deletion and a P0
+  fix get one review from a fresh session or subagent that receives only the
+  issue, the diff, these standards and the test output — not the author's
+  notes or the conversation that produced the change. It judges the artifact
+  only. This is a second layer on top of "Run it", not a replacement: a clean
+  context cannot see what was never written down, and a run at the reviewed
+  head is still the proof.
 - **Break it on purpose.** Revert the fix, or break the code it guards in
   several ways, and check that the new tests catch each break. A reviewer may
   add review tests of their own.
@@ -130,6 +164,9 @@ applies:
 - **Don't reverse deliberate decisions.** Product decisions recorded in
   [`decisions.md`](decisions.md) are the maintainer's to change. A PR that
   changes one is left for the maintainer.
+- **Rule and instruction files are not normal PRs.** A change to `AGENTS.md`,
+  `CLAUDE.md`, `LESSONS.md`, `docs/code-standards.md`, `docs/decisions.md` or
+  `docs/loops/` is the maintainer's call, even when it looks like a typo fix.
 - **Compare UI pass counts with `main`.** A test that fails on `main` too is
   not a baseline (see [Tests](#tests)). A PR that says its failures "fail the
   same on main" gets that checked, and gets them fixed or filed before the

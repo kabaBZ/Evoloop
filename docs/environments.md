@@ -131,4 +131,6 @@ Record what exists, who owns it, and how to reset it:
 | <linux-vm> | <Ubuntu 24.04> | <packaging, display server> | <SSH> | <snapshot name> |
 
 One full test suite runs on a machine at a time. Parallel suites make every
-run time out, and then no record says the suite passed.
+run time out, and then no record says the suite passed. Name the queue or lock
+here — a file, a CI concurrency group, or a tracker label — so a second loop
+can see it before it starts.
