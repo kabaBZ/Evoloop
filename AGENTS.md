@@ -3,7 +3,9 @@
 > **This repository is a template.** The double-brace placeholders (such as
 > `PROJECT_NAME`) are intentional. Fill
 > them by following [`docs/bootstrap.md`](docs/bootstrap.md); never replace one
-> as a drive-by "fix", and never delete the paragraph that explains them.
+> as a drive-by "fix", and never delete the paragraph that explains them. A
+> fork also replaces `README.md` and `README.zh-CN.md` with the product's
+> README; if they still describe the base, bootstrap is not finished.
 
 This file is a **routing table**. It holds no rules of its own except the
 invariants at the bottom. Before doing a kind of work, read the document
@@ -21,7 +23,7 @@ that owns it.
 | Reproduce a user's report | [`docs/environments.md`](docs/environments.md) |
 | Open or run an autonomous loop | [`docs/loops/README.md`](docs/loops/README.md) |
 | Set up a fork, fill placeholders, or start the loops | [`docs/bootstrap.md`](docs/bootstrap.md) |
-| See what changed in the base itself | [`BASE-CHANGELOG.md`](BASE-CHANGELOG.md) |
+| See what changed in the base itself | [`docs/BASE-CHANGELOG.md`](docs/BASE-CHANGELOG.md) |
 | Record a lesson, promote a rule, or run the nightly review | [`LESSONS.md`](LESSONS.md) |
 
 ## What this repository is

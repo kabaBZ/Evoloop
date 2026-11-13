@@ -4,8 +4,20 @@ Changes to the base itself, newest first. A fork reads this to know what it is
 missing when it merges the base back in. Product changes do not go here.
 
 Versioning: `v0.<major>.<minor>` — major for a change that alters a rule's
-meaning, minor for added rules or documents. A fork's merge conflicts are
+meaning, minor for added rules or documents. Moving a file is major even when
+no rule changed: every fork's links break. A fork's merge conflicts are
 resolved in the fork's `decisions.md`, not here.
+
+## v0.3.0
+
+- Moved `BASE-CHANGELOG.md` to `docs/BASE-CHANGELOG.md`. The repository root
+  now holds only the entry points (`CLAUDE.md`, `AGENTS.md`, `LESSONS.md`),
+  the project's own README and changelog, the license, and GitHub's
+  conventional `CONTRIBUTING.md` and `SECURITY.md`.
+- `README.md` and `README.zh-CN.md` now open with a fork notice: replace them
+  with the product's README before the first release. `bootstrap.md` adds the
+  step and `AGENTS.md` repeats it; the self-check fails if the notice is still
+  there.
 
 ## v0.2.0
 

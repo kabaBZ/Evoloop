@@ -2,6 +2,11 @@
 
 [English](README.md)
 
+> **这是底座的 README，不是产品 README。** fork 之后，第一个 release 之前，
+> 把本文件和英文 [`README.md`](README.md) 换成项目自己的 README。
+> fork 步骤都在 [`docs/bootstrap.md`](docs/bootstrap.md)，换掉不会丢东西。
+> Agent 如果还能看到这段提示，说明 bootstrap 没做完。
+
 这是一个**给“由 Agent 写代码、Review、合并、发版”的项目用的底座**，不是一个应用。
 它把 magpie 那种“三条 `/loop` 自动维护一个仓库”的运作方式抽出来，去掉产品细节，
 保留真正约束 Agent 的东西：路由表、规则、错题本、社区闸门、发布闸门。
@@ -23,11 +28,11 @@ CLAUDE.md                  只 import 两个文件
 AGENTS.md                  路由表：干什么活之前读哪份文档
 LESSONS.md                 错题本：规则 + 原因 + 证据 + Seen N×
 CHANGELOG.md               产品更新日志模板（每个版本一条）
-BASE-CHANGELOG.md          底座自己的版本和变更，fork 回并时看这个
 LICENSE                    默认 MIT；要换宽松协议就改这里
 SECURITY.md                安全问题走私密渠道，别开公开 issue
 CONTRIBUTING.md            人类贡献者开口前先看这个
 docs/
+  BASE-CHANGELOG.md        底座自己的版本和变更，fork 回并时看这个
   bootstrap.md             开 fork 的清单，所有 {{占位符}}
   project-brief.md         产品是什么、给谁用、拒绝做什么
   decisions.md             已经拍板的决定和审美，不许被顺手推翻
@@ -90,6 +95,6 @@ docs/
 
 细节和逐文件对照见 [`docs/extraction-map.md`](docs/extraction-map.md)。
 
-底座自身的文件：[English README](README.md)、[BASE-CHANGELOG.md](BASE-CHANGELOG.md)、
+底座自身的文件：[English README](README.md)、[底座更新日志](docs/BASE-CHANGELOG.md)、
 [CHANGELOG.md](CHANGELOG.md)、[LICENSE](LICENSE)、[SECURITY.md](SECURITY.md)、
 [CONTRIBUTING.md](CONTRIBUTING.md)。

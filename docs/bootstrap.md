@@ -58,6 +58,10 @@ you, the documents are incomplete.
 ## 3. Set the repository up
 
 - Make this repository a **template repository**, so forks start from it.
+- Replace `README.md` and `README.zh-CN.md` with the product's own README. The
+  base's text is in git history and the fork steps are here, so the replacement
+  loses nothing. Leave no "this is a template" notice behind; if an agent can
+  still read it, bootstrap is unfinished.
 - Protect `{{MAIN_BRANCH}}`: no force-push, no deletion, required CI. If the
   nightly loop commits lessons and docs directly, give its bot an allowlist
   entry limited to `LESSONS.md` and `docs/`; code changes still go through a
@@ -131,6 +135,8 @@ Before trusting it, run these checks by hand:
   review), and loop 3 names it.
 - A documentation-only change passes the criteria in
   [`code-standards.md`](code-standards.md#docs-only-changes).
+- `README.md` describes the product, not the base: no template notice, no
+  "fork-ready base" opening, and the set-up steps live in this file, not there.
 - A new agent, given only `CLAUDE.md`, can answer: where do I read before a
   code change, how do I verify, what may I merge, and what do I never do.
 

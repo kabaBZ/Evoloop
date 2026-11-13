@@ -1,5 +1,11 @@
 # Agent-Maintained Project Base
 
+> **This is the base's README, not a product README.** A fork replaces this
+> file and [`README.zh-CN.md`](README.zh-CN.md) with the product's own README
+> before the first release. The fork steps live in
+> [`docs/bootstrap.md`](docs/bootstrap.md), so the replacement loses nothing.
+> An agent that still sees this notice has not finished bootstrap.
+
 This repository is a **fork-ready base for projects whose code is written,
 reviewed, merged and released by coding agents**, with a human keeping
 direction and taste. It is not an application. It is the operating system
@@ -65,13 +71,13 @@ Everything else is a reference the routing table points at.
 CLAUDE.md                     entry point: imports AGENTS.md and LESSONS.md
 AGENTS.md                     routing table and hard invariants
 LESSONS.md                    living wrong-answer notebook (mechanism + ledger)
-README.md / README.zh-CN.md   what this base is; 中文说明
+README.md / README.zh-CN.md   base README; a fork replaces it with the product's
 CHANGELOG.md                  product changelog template; one entry per version
-BASE-CHANGELOG.md             what changed in the base; a fork reads this
 LICENSE                       MIT by default; replace it if you choose another
 SECURITY.md                   how to report a vulnerability privately
 CONTRIBUTING.md               what a human contributor needs before a PR
 docs/
+  BASE-CHANGELOG.md           what changed in the base; a fork reads this
   bootstrap.md                fork checklist; every placeholder token
   project-brief.md            product, users, non-goals, constraints
   decisions.md                deliberate decisions and taste; "don't reverse"
@@ -100,7 +106,7 @@ docs/
 ```
 
 Direct links for the files a fork touches first:
-[中文说明](README.zh-CN.md), [BASE-CHANGELOG.md](BASE-CHANGELOG.md),
+[中文说明](README.zh-CN.md), [base changelog](docs/BASE-CHANGELOG.md),
 [product changelog template](CHANGELOG.md), [license](LICENSE),
 [security policy](SECURITY.md), [contributing](CONTRIBUTING.md),
 [language addendum template](docs/standards/language-addendum-template.md),

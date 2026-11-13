@@ -39,7 +39,7 @@ commit that bumps the version, before the tag.
 A project that generates release notes from merged PRs still keeps the file:
 the release body is written for the moment, the changelog is what a user reads
 three versions later. The base's own changes are in
-[`BASE-CHANGELOG.md`](../BASE-CHANGELOG.md); that file is not the product
+[`BASE-CHANGELOG.md`](BASE-CHANGELOG.md); that file is not the product
 changelog.
 
 ## Tag
