@@ -8,6 +8,18 @@ meaning, minor for added rules or documents. Moving a file is major even when
 no rule changed: every fork's links break. A fork's merge conflicts are
 resolved in the fork's `decisions.md`, not here.
 
+## v0.4.0
+
+- Added [`docs/loops/originals.md`](loops/originals.md): the three original
+  loop prompts, transcribed verbatim from the screenshot supplied on
+  2026-11-13, plus a table of where the generalized loop pages deliberately
+  differ (loop 2 does not release; loop 3 does not block).
+- Corrected provenance in both READMEs and the extraction map. The prompts
+  were not published when v0.1.0 was written; they were supplied later, so
+  "reconstructed" is no longer true.
+- `3-nightly-review.md` now says explicitly that malicious code is a security
+  finding, not a cleanup task.
+
 ## v0.3.0
 
 - Moved `BASE-CHANGELOG.md` to `docs/BASE-CHANGELOG.md`. The repository root
@@ -68,12 +80,13 @@ First extraction, from magpie's agent maintenance setup.
 - `docs/environments.md`, `docs/agents-memory.md`, `docs/subsystems/`,
   `docs/decisions.md`, `docs/project-brief.md`, `docs/bootstrap.md`.
 - `docs/loops/`: the three loops, reconstructed from public descriptions
-  because magpie has not published its prompts.
+  because magpie had not published its prompts. (The originals were supplied
+  later; see v0.4.0.)
 - `docs/standards/`: an addendum template, with Go and UI as examples rather
   than universal rules.
 - `.github/`: PR template with a verification record, bug and feature issue
   templates.
 
-Known gap: the three loop prompts are a generalization, not magpie's originals.
-Improve them from evidence in a real fork, and send the universal parts back
-here.
+Known gap (closed in v0.4.0, when the originals were supplied): the three loop
+prompts are a generalization, not magpie's originals. Improve them from
+evidence in a real fork, and send the universal parts back here.

@@ -21,6 +21,11 @@ rails. A prompt run verbatim asks for facts the project never supplied.
 | 2 | Social mentions and feedback | Continuously, or every few hours | [`2-social-feedback.md`](2-social-feedback.md) |
 | 3 | The codebase: nightly review, lessons, cleanup | Once a day, at a quiet hour | [`3-nightly-review.md`](3-nightly-review.md) |
 
+The three prompts as they were originally written, transcribed verbatim, are
+in [`originals.md`](originals.md). That page also lists where this base
+deliberately differs — loop 2 never releases, loop 3 never blocks an author.
+Read it for the intent; adapt the loop pages, not the originals.
+
 **Run one loop before you run three.** A loop that produces rework is worse
 than no loop. Add the next entrance only when the previous one has a stable
 record: releases wait for green CI, rework is rare, and `LESSONS.md` is being

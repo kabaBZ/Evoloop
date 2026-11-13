@@ -154,10 +154,10 @@ This base intentionally leaves out:
   under `docs/standards/` as examples, not as universal rules;
 - the release fan-out to a second repository, which is a magpie deployment
   choice;
-- the exact loop prompts, which were never published. The prompts here are
-  reconstructed from public descriptions and generalized; they are **reference
-  designs, not runtime prompts** — adapt each one to the project's commands,
-  surfaces and checkpoint store.
+- the loop prompts as runtime text. The originals are transcribed verbatim in
+  [`docs/loops/originals.md`](docs/loops/originals.md); the loop pages are
+  generalized **reference designs, not runtime prompts** — adapt each one to
+  the project's commands, surfaces and checkpoint store.
 
 See [`docs/extraction-map.md`](docs/extraction-map.md) for the exact mapping
 and what was generalized, kept, or dropped.

@@ -33,16 +33,16 @@ tree had 10,206 paths and 9,686 blobs.
 
 ## The loop model
 
-The three `/loop` tasks are not in the repository. Their behavior is described
-publicly by dotey and wquguru; the prompts themselves were never published,
-and yetone's two posts were protected. The prompts in `docs/loops/` are
-**reconstructed from those descriptions and generalized**, not extracted:
+The three `/loop` tasks are not in the repository. The prompts were supplied to
+this base on 2026-11-13 and transcribed verbatim in
+[`loops/originals.md`](loops/originals.md). The pages in `docs/loops/` are
+**generalized adaptations, not runtime copies**:
 
-| Loop | Public description | This base |
+| Loop | What the original asks | This base |
 | --- | --- | --- |
 | 1. GitHub + Discord | Triage issues (fix or decline, reply either way); review PRs line by line and actually run them; fix → release → reply; one canned reply for relay/reseller ads; read every channel, real @ mentions | `1-github-and-community.md` |
-| 2. X/Twitter | A cheap decision model filters "is this about the project / is it feedback" before the main model; fix reproducible feedback and reply to the post | `2-social-feedback.md` |
-| 3. Nightly | Clean up "shit mountain" and malicious code; write lessons (which PRs shouldn't merge, which verification was thin); propose low-quality contributors for the block list | `3-nightly-review.md` |
+| 2. X/Twitter | A cheap decision model filters "is this about the project / is it feedback" before the main model; fix reproducible feedback, ship it, then reply to the post | `2-social-feedback.md` — opens a PR and lets loop 1 release; a deliberate divergence |
+| 3. Nightly | Clean up messy and malicious code; write lessons (which PRs shouldn't merge, which verification was thin); block authors who keep sending low-quality code | `3-nightly-review.md` — nightly watermark window; proposes block evidence, the maintainer decides |
 
 What the public descriptions add beyond the repository, and what this base
 keeps:
@@ -82,7 +82,9 @@ keeps:
   product ships, not a constraint on the coding agent; agent-side memory is
   covered by [`agents-memory.md`](agents-memory.md).
 - **The release fan-out to a second repository.** A deployment choice.
-- **The exact nightly-review trigger and prompts.** Not public; reconstructed.
+- **The exact nightly-review trigger.** The original says only `定时`
+  (periodically); the nightly window and the watermark are this base's design,
+  not magpie's.
 - **The block list entries and the named authors.** Personal and
   project-specific; the *criteria* are kept, the names are not.
 - **Go/GUI-specific guard tests.** They are excellent examples of "a guard

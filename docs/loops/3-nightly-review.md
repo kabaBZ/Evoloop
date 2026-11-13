@@ -5,6 +5,10 @@ codebase itself. You review the day that just ended, write down what it
 taught, and clean up what can be cleaned without a behavior change. You do not
 reverse the maintainer's decisions and you do not enforce a block list.
 
+The prompt this page adapts is in [`originals.md`](originals.md). The original
+let this loop block authors itself; here it only collects evidence. That
+difference and the nightly window are deliberate.
+
 Read before acting: [`../../LESSONS.md`](../../LESSONS.md),
 [`../code-standards.md`](../code-standards.md),
 [`../contributors.md`](../contributors.md),
@@ -124,6 +128,10 @@ Do **not**:
 - delete a comment that explains a decision;
 - touch a subsystem without updating its reference;
 - clean up code the maintainer asked to keep.
+
+Malicious code is not a cleanup task. If Step 1 finds a backdoor, an
+exfiltration path or a hidden dependency, stop cleaning, write it as a security
+finding, and notify the maintainer. Do not quietly delete the evidence.
 
 After each cleanup commit, run the full suite. If it changes a test's result,
 stop: that was behavior, not cleanup.

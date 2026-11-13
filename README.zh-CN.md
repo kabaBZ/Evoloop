@@ -88,9 +88,10 @@ docs/
   复盘/计数/升级机制、六条验收标准、社区 PR 的查害和署名规则、发布闸门。
 - 通用化：语言、平台、命令、供应商、发布方式全部变成占位符；Go/GUI 细节放进
   `docs/standards/` 当示例，不当普适规则。
-- 没抄：magpie 的产品架构、provider 表、子系统页、把 release 转发到第二个仓库、
-  以及三个 loop 的原始提示词（官方没公开，这里是按公开描述重建并通用化的）。
-  这三份 loop 文档是**参考设计，不是能直接跑的提示词**；每个项目要按自己的命令、
+- 没抄：magpie 的产品架构、provider 表、子系统页、把 release 转发到第二个仓库，
+  以及三个 loop 的原始提示词照抄成可直接运行的提示词。原文已逐字记录在
+  [`docs/loops/originals.md`](docs/loops/originals.md)；这三份 loop 文档是按它
+  通用化的版本，是**参考设计，不是能直接跑的提示词**；每个项目要按自己的命令、
   入口和 checkpoint 存放位置改写，只保留安全底线。
 
 细节和逐文件对照见 [`docs/extraction-map.md`](docs/extraction-map.md)。

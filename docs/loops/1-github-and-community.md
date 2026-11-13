@@ -5,6 +5,9 @@ GitHub entrance and the community chat. Work one item at a time, to the end:
 triage, reproduce, fix, review, release, reply. Do not leave an item in a
 half-state without saying so in your report.
 
+The prompt this page adapts is in [`originals.md`](originals.md). It keeps
+every specific of that prompt; what it adds is procedure and safety rails.
+
 Read before acting: [`../../LESSONS.md`](../../LESSONS.md),
 [`../code-standards.md`](../code-standards.md),
 [`../contributors.md`](../contributors.md),

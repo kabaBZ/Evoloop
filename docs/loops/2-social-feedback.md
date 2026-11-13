@@ -5,6 +5,10 @@ social entrance: find real feedback, turn the reproducible part into a fix,
 and reply to the person once. You do not read the whole firehose with the main
 model.
 
+The prompt this page adapts is in [`originals.md`](originals.md). One
+difference is deliberate: the original let this loop ship the fix; this base
+gives release authority to loop 1 only.
+
 Read before acting: [`../../LESSONS.md`](../../LESSONS.md),
 [`../code-standards.md`](../code-standards.md),
 [`../decisions.md`](../decisions.md), [`../project-brief.md`](../project-brief.md),
@@ -72,6 +76,12 @@ For a **bug report**:
    settle it (version, exact error, OS). Do not ask for a dump of logs in
    public.
 4. If it is already fixed: reply with the version, and say when it shipped.
+
+**Release authority is a deliberate difference.** The original prompt told this
+loop to ship the fix and then reply. Here it opens a PR and stops; loop 1
+releases, and the reply waits for the version. One loop owns the release, so a
+social post cannot publish code that no one reviewed. See
+[`originals.md`](originals.md#where-this-base-deliberately-differs).
 
 For a **question**: answer with facts from the docs and link the reference. If
 the answer is not written down, write it in the docs first, then link it.
