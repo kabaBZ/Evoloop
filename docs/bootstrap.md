@@ -58,7 +58,7 @@ you, the documents are incomplete.
 ## 3. Set the repository up
 
 - Make this repository a **template repository**, so forks start from it.
-- Replace `README.md` and `README.zh-CN.md` with the product's own README. The
+- Replace `README.md` and `README.en.md` with the product's own README. The
   base's text is in git history and the fork steps are here, so the replacement
   loses nothing. Leave no "this is a template" notice behind; if an agent can
   still read it, bootstrap is unfinished.

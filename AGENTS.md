@@ -4,7 +4,7 @@
 > `PROJECT_NAME`) are intentional. Fill
 > them by following [`docs/bootstrap.md`](docs/bootstrap.md); never replace one
 > as a drive-by "fix", and never delete the paragraph that explains them. A
-> fork also replaces `README.md` and `README.zh-CN.md` with the product's
+> fork also replaces `README.md` and `README.en.md` with the product's
 > README; if they still describe the base, bootstrap is not finished.
 
 This file is a **routing table**. It holds no rules of its own except the
