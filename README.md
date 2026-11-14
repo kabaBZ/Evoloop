@@ -3,6 +3,10 @@
 </p>
 
 <p align="center">
+  <img src="docs/assets/evoloop-logo.svg" alt="EvoLoop icon" width="112" height="112">
+</p>
+
+<p align="center">
   <a href="README.en.md">English</a> · <strong>简体中文</strong>
 </p>
 
