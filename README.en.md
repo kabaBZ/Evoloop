@@ -7,12 +7,18 @@
 </p>
 
 <p align="center">
+  <img alt="Status: experimental" src="https://img.shields.io/badge/Status-experimental-E11D48?style=flat-square">
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-22D3EE?style=flat-square">
   <img alt="Autonomous loops: 3" src="https://img.shields.io/badge/Autonomous%20loops-3-818CF8?style=flat-square">
   <img alt="Maintained by agents" src="https://img.shields.io/badge/Maintained%20by-agents-C084FC?style=flat-square">
 </p>
 
 ---
+
+> [!WARNING]
+> **For evaluation, learning and research only. Do not point it at production and walk away.**
+>
+> EvoLoop constrains agents **only through prompts — soft constraints in text**, with no permission isolation, sandbox, audit trail or runtime enforcement. An agent can still act beyond its brief, delete or overwrite files, leak credentials, merge changes that should not land, publish a bad release, or burn through API budget. Whether the rules are followed depends on the model, the prompt, the context and luck — **it is not a technical guarantee**. By using this project you accept those risks.
 
 ## What EvoLoop is
 
@@ -25,6 +31,18 @@ Three principles run through the repository:
 - **Humans keep direction and taste; agents own execution and verification.** Product boundaries, aesthetics, security and the block list stay with the maintainer; everything else belongs to the loops.
 - **Every rework becomes a rule**, not a reminder to "be more careful".
 - **"Fixed" holds only on the reporter's real surface.** A compile is not a test, and a cross-build is not a run on that platform.
+
+## Risks and limits
+
+> **One sentence: these are soft constraints in prompts, not a security mechanism.**
+
+- **The rules live in prompts and documents, not runtime enforcement.** There is no permission system, sandbox, audit trail or interlock. A model can ignore a rule, or reinterpret it into something else.
+- **Agents still make mistakes.** Including — but not limited to — deleting or overwriting files, changing repository settings, writing credentials into logs or commits, merging a PR that should not land, publishing a broken release, or burning API budget.
+- **Evaluation, learning and research only.** Not suitable for unattended production automation, especially where real user data, production credentials or irreversible actions are involved.
+- **Behavior drifts with models and platforms.** The same prompt can behave differently across models, versions and clients. Working today does not mean working tomorrow.
+- **No quality guarantee.** The project is provided "as is" under the MIT license, with no promise of fixes, safety or availability.
+
+If you try it on a real project, add at least: **an isolated repository and credentials, least-privilege tokens, branch protection, a human review gate, rollback-capable backups and a cost cap**. Those hard controls are outside the scope of this project.
 
 ## How it works
 
@@ -70,6 +88,8 @@ docs/code-standards.md ── promoted to a hard rule, checked by every review
 ## Quick start
 
 EvoLoop ships as a **template**. Fork or copy it into your own repository, complete the one-time bootstrap, then let the loops take over day-to-day maintenance.
+
+> For the first run, use an **isolated repository with no production credentials, in a throwaway environment**. Until it works, do not connect it to anything you cannot afford to lose (see [Risks and limits](#risks-and-limits)).
 
 1. **Fill the placeholders.** `grep -rn '{{' .` lists every `{{TOKEN}}`; replace each one using the table in [`docs/bootstrap.md`](docs/bootstrap.md).
 2. **Write the product brief.** In [`docs/project-brief.md`](docs/project-brief.md), state what the product is, who it serves, and what it refuses to do. An agent cannot decide product questions it was never told about.
@@ -122,7 +142,7 @@ docs/
 
 ## The non-negotiables
 
-These are the parts that make autonomous maintenance safe. Do not fork them away unless you replace them with something stronger:
+These are operating conventions that make autonomous maintenance **somewhat** controllable. Note that they are carried by prompts and documents, **not enforced at runtime**; when a model ignores, misreads or is led astray by context, nothing stops it automatically. Do not fork them away unless you replace them with real hard controls:
 
 - **Verification is real.** The reporter's exact case, on the surface they use, in a real environment.
 - **A check that was not run is listed as not run.** Never omitted, never implied.
@@ -149,7 +169,7 @@ This repository keeps that mechanism and removes the product-specific parts: lan
 
 ## About this repository
 
-EvoLoop is currently published as a **base template**: this README describes the framework itself. The `{{TOKEN}}` placeholders are intentional and their contract is in [`docs/bootstrap.md`](docs/bootstrap.md). Once the base becomes a concrete product, replace this file with the product's own README. Changes to the base itself are recorded in [`docs/BASE-CHANGELOG.md`](docs/BASE-CHANGELOG.md). The icon source file is [`evoloop-logo.svg`](docs/assets/evoloop-logo.svg).
+EvoLoop is currently published as a **base template**: this README describes the framework itself. Its purpose is **evaluation, learning and reference, not a production-grade security framework** — add the hard controls yourself before going live (see [Risks and limits](#risks-and-limits)). The `{{TOKEN}}` placeholders are intentional and their contract is in [`docs/bootstrap.md`](docs/bootstrap.md). Once the base becomes a concrete product, replace this file with the product's own README. Changes to the base itself are recorded in [`docs/BASE-CHANGELOG.md`](docs/BASE-CHANGELOG.md). The icon source file is [`evoloop-logo.svg`](docs/assets/evoloop-logo.svg).
 
 ## License
 

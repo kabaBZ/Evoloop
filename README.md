@@ -7,12 +7,18 @@
 </p>
 
 <p align="center">
+  <img alt="Status: experimental" src="https://img.shields.io/badge/Status-experimental-E11D48?style=flat-square">
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-22D3EE?style=flat-square">
   <img alt="Autonomous loops: 3" src="https://img.shields.io/badge/Autonomous%20loops-3-818CF8?style=flat-square">
   <img alt="Maintained by agents" src="https://img.shields.io/badge/Maintained%20by-agents-C084FC?style=flat-square">
 </p>
 
 ---
+
+> [!WARNING]
+> **仅供体验、学习与研究，请勿直接用于生产环境的无人值守自动化。**
+>
+> EvoLoop 只用**提示词（prompt）对 Agent 施加软约束**，不提供权限隔离、安全沙箱、审计或任何运行时强制。Agent 仍然可能越权操作、误删或覆盖文件、泄露凭据、合并不该合并的改动、发布错误版本，或者烧掉大量 API 额度。是否遵守规则，取决于模型、提示词、上下文和运气——**不是技术保证**。使用本项目即表示您理解并自行承担这些风险。
 
 ## EvoLoop 是什么
 
@@ -25,6 +31,18 @@ EvoLoop 是一套面向 **「由 Agent 编写、审查、合并、发布」** �
 - **人保留方向与品味，Agent 承担执行与验证。** 产品边界、审美、安全与黑名单由人拍板，其余交给循环。
 - **每次返工都沉淀为规则**，而不是一句「下次注意」。
 - **「已修复」只在报告者的真实环境里成立。** 编译通过不算，隔壁平台的交叉构建也不算。
+
+## 风险与边界
+
+> **一句话：这是提示词层面的软约束，不是安全机制。**
+
+- **约束靠提示词和文档，不靠运行时强制。** 没有权限系统、沙箱、审计或拦截。模型可以无视规则，也可以把规则「理解」成别的意思。
+- **Agent 仍会做错事。** 包括但不限于：误删或覆盖文件、修改仓库设置、把凭据写进日志或提交、合并不该合并的 PR、发布有问题的版本、消耗大量 API 额度。
+- **仅供体验、学习与研究。** 不适合生产环境的无人值守自动化，尤其不适合处理真实用户数据、生产凭据或不可回滚的操作。
+- **行为随模型和平台漂移。** 同一套提示词在不同模型、版本和客户端上的表现可能完全不同；今天有效，不代表明天有效。
+- **没有质量担保。** 项目按 MIT 协议「按原样」提供，不承诺修复、不承诺安全、不承诺可用性。
+
+如果要在真实项目上试，至少自己补上：**隔离的仓库与凭据、最小权限 token、分支保护、人工复核闸门、可回滚备份和成本上限**。这些硬性防护不在本项目的能力范围内。
 
 ## 核心机制
 
@@ -70,6 +88,8 @@ docs/code-standards.md ── 升级为硬规则，之后的每次评审都检�
 ## 快速开始
 
 EvoLoop 以**模板**形式发布。把它 fork 或复制成自己的仓库后，先完成一次性的 bootstrap，再让循环接管日常维护。
+
+> 第一次跑，请放在**隔离的仓库、无生产凭据、可随时丢弃**的环境里。跑通之前，别把它接到任何你赔不起的东西上（详见[风险与边界](#风险与边界)）。
 
 1. **填占位符。** `grep -rn '{{' .` 列出全部 `{{TOKEN}}`，按 [`docs/bootstrap.md`](docs/bootstrap.md) 的表格逐一替换。
 2. **写产品边界。** 在 [`docs/project-brief.md`](docs/project-brief.md) 里写清楚产品是什么、给谁用、明确拒绝什么。Agent 无法替你决定从未被告知的产品问题。
@@ -122,7 +142,7 @@ docs/
 
 ## 不可让步的底线
 
-这些是让「自治维护」保持安全的部分。不要在 fork 时删掉它们，除非你换上了更强的机制：
+这些是让自治维护**尽量可控**的操作约定。注意：它们由提示词和文档执行，**不是运行时强制**；模型忽略、误读或被上下文带偏时，系统不会自动拦截。不要在 fork 时删掉它们，除非你换上了真正的硬性机制：
 
 - **验证必须是真的。** 用户的原案例，在用户实际使用的界面上，在真实环境里。
 - **没跑的检查必须列为「没跑」。** 不许省略，不许暗示它已经通过。
@@ -149,7 +169,7 @@ EvoLoop 的运作模型来自 [yetone/magpie](https://github.com/yetone/magpie)�
 
 ## 关于本仓库
 
-EvoLoop 目前以**底座模板**的形式发布：本 README 描述的是框架本身。仓库中的 `{{TOKEN}}` 占位符是刻意的，填写契约在 [`docs/bootstrap.md`](docs/bootstrap.md)；fork 成具体产品后，应使用产品自己的 README 替换本文件。底座自身的版本变更见 [`docs/BASE-CHANGELOG.md`](docs/BASE-CHANGELOG.md)。项目图标源文件：[`evoloop-logo.svg`](docs/assets/evoloop-logo.svg)。
+EvoLoop 目前以**底座模板**的形式发布：本 README 描述的是框架本身。它的定位是**体验、学习与参考**，不是生产级安全框架——上线前请自行补齐硬性防护（见[风险与边界](#风险与边界)）。仓库中的 `{{TOKEN}}` 占位符是刻意的，填写契约在 [`docs/bootstrap.md`](docs/bootstrap.md)；fork 成具体产品后，应使用产品自己的 README 替换本文件。底座自身的版本变更见 [`docs/BASE-CHANGELOG.md`](docs/BASE-CHANGELOG.md)。项目图标源文件：[`evoloop-logo.svg`](docs/assets/evoloop-logo.svg)。
 
 ## 许可证
 
