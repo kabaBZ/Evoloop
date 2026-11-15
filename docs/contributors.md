@@ -95,8 +95,10 @@ proposal is evidence, not a verdict; the maintainer fills the last column.
 
 This table is also the **evidence log**. A relay, reseller or affiliate ad
 gets a row with "ad" in the Rule column; an author being watched gets a row
-with "watch". A row with no rule and no link is a note, not a proposal. Loop 3
-reads this section; loop 1 and loop 2 append to it.
+with "watch"; an author who keeps sending abusive or no-value issues after a
+reply gets a row with "abuse" or "no-value". A row with no rule and no link is
+a note, not a proposal. Loop 3 reads this section; loop 1 and loop 2 append to
+it.
 
 ## Lists
 

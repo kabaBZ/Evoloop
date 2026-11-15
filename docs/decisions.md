@@ -173,6 +173,31 @@ Record only the choices that constrain future work, not the whole design.
 - **Owner:** <...>
 - **Date:** <...>
 
+## Community
+
+### A hostile or no-value issue gets one reply, then closes
+
+- **Decision:** Loop 1 closes an issue after one short reply when it is abuse,
+  harassment or trolling with no actionable report; an ad, relay or reseller
+  pitch; a duplicate; a request that contradicts a recorded decision or a
+  feature the brief refuses; pure preference or no actionable content; already
+  fixed and released; or answered by the docs. Declined items close as "not
+  planned", fixed or answered items as "completed", and duplicates with
+  GitHub's duplicate reason.
+- **Why:** An issue that will not produce a change still costs a slot in the
+  queue and invites argument. One reply keeps a public record of why; closing
+  keeps the queue meaning "work to do". The categories are narrow and
+  pre-ruled so the agent does not have to guess at a maintainer decision.
+- **Alternatives:** Leave them open (rejected: the queue fills with items
+  nobody will act on); close silently (rejected: the reporter learns nothing,
+  and it reads as censorship); ask the maintainer each time (rejected: it is
+  the same decision every time).
+- **Do not reverse:** Do not close a reproducible, in-scope bug because its
+  reporter was rude; do not use this path for security reports, legal notices
+  or threats; do not close without a reply.
+- **Owner:** maintainer.
+- **Date:** 2026-11-15
+
 ## Superseded
 
 | Decision | Superseded by | Date |

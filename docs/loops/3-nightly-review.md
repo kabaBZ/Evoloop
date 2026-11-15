@@ -153,6 +153,11 @@ Read the day's community PRs and issues. If an author meets a rule in
 block, never close an account, never post the block message yourself. The
 maintainer decides.
 
+Audit the day's issues that were closed after one reply. Each must fit a
+category in [loop 1](1-github-and-community.md#issues-closed-after-one-reply)
+and must have a reply before the close. An auto-close outside those categories,
+or one with no reply, is a finding: reopen the issue and report it.
+
 ## Never
 
 - Review commits the watermark already covers.

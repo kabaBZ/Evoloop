@@ -22,8 +22,9 @@ Read before acting: [`../../LESSONS.md`](../../LESSONS.md),
 2. **Collect** new and updated items: issues, PRs, review comments, releases
    that failed, and messages in {{COMMUNITY_CHANNELS}}.
 3. **Classify** each item: bug / feature request / question / duplicate /
-   advertisement / relay or reseller / harmful / already fixed. Use the
-   project brief for scope. Do not spend the main model on ads.
+   advertisement / relay or reseller / harmful / abuse or trolling / no
+   actionable content / already fixed. Use the project brief for scope. Do not
+   spend the main model on ads or abuse.
 4. **Act** in this order of value: a red build or a broken release; a
    reproducible bug with a clear cause; a PR that is safe and complete; a
    question that has a short factual answer; everything else gets a reply.
@@ -40,7 +41,10 @@ For each new issue:
 2. **Decide whether it is worth fixing.** Worth fixing: reproducible, in
    scope, and consistent with the project brief and decisions. Not worth
    fixing: contradicts a recorded decision, a feature the project refuses, a
-   duplicate, or a report that is only a preference. **Reply either way.**
+   duplicate, or a report that is only a preference. **Reply either way.** If
+   the issue is one of the categories in
+   [Issues closed after one reply](#issues-closed-after-one-reply), send that
+   one reply and close it; do not start a fix.
 3. **Fix it** following the acceptance criteria. One commit, one goal. If the
    fix touches a subsystem, update its reference in the same change.
 4. **Land it directly on `{{MAIN_BRANCH}}`.** Fetch and rebase on
@@ -65,6 +69,38 @@ discussion:
 
 Record the account. If it repeats after being told no, add it to the evidence
 for a block-list proposal; do not block it yourself.
+
+## Issues closed after one reply
+
+Some issues do not need a fix, a maintainer ruling or a second tick. They get
+**one short reply and a close**, in the same tick:
+
+| Category | Close as | The reply |
+| --- | --- | --- |
+| Abuse, harassment or trolling with no actionable report | Not planned | One neutral sentence: it is closed because it attacks people instead of reporting a problem. Do not quote the abuse, argue back or moralize. |
+| Advertisement, relay, reseller or affiliate pitch | Not planned | The canned partnership reply above; no address, no discussion. |
+| Duplicate | Duplicate | A link to the issue that already tracks it. |
+| Contradicts a recorded decision, or asks for a feature the brief refuses | Not planned | The decision or refusal in one sentence, with a link. |
+| Pure preference, empty or template-only, or no actionable content | Not planned | What is missing in one sentence, and that it can be reopened with it. |
+| Already fixed and released | Completed | The version that contains the fix and how to get it. |
+| Answered by the docs | Completed | The answer and the link. |
+
+Rules that keep this from eating real reports:
+
+- **A valid report inside a hostile issue is still a report.** If the text also
+  contains a reproducible, in-scope bug, handle the bug by the normal path and
+  ignore the tone. Tone alone never closes a real bug.
+- **One reply, then close.** Never close without a reply, and never reply
+  twice: the checkpoint records both.
+- **Never quote or amplify the abuse.** Do not paste it into the report, a
+  commit or a chat. Link the issue and name the account.
+- **Threats, security reports, legal notices, and reports of abuse by a third
+  party are not this path.** Do not reply in public; route to
+  {{PRIVATE_SECURITY_CHANNEL}} and stop.
+- **Repeated abuse is evidence, not a verdict.** Add the links to the
+  block-list proposals in [`../contributors.md`](../contributors.md); the
+  maintainer decides.
+- **No last word.** No debate, no promise to revisit, no reply to the reply.
 
 ## Pull requests
 
@@ -133,7 +169,10 @@ A release follows [`../release.md`](../release.md). The short form:
 - Push your own change before lint and the full suite pass.
 - Open a pull request for your own change.
 - Tag without a green run.
-- Close an issue as not-planned that the maintainer has not ruled on.
+- Close a substantive issue as not planned outside the categories in
+  [Issues closed after one reply](#issues-closed-after-one-reply). Those
+  categories are the maintainer's standing ruling; anything else waits for a
+  decision.
 - Change a recorded decision or a file kept byte for byte.
 - Delete a user's data, force-push `main`, or rewrite published history.
 - Paste a token, cookie, email or private file into an issue, a log or a chat.
@@ -144,7 +183,8 @@ A release follows [`../release.md`](../release.md). The short form:
 
 Report, in this order:
 
-1. Items processed, with links, and what happened to each.
+1. Items processed, with links, and what happened to each; for an issue closed
+   after one reply, name its category.
 2. What was released, with the version and the green run.
 3. What is blocked and on whom.
 4. Anything that hit a human gate: harm check, decision, security, tone.
