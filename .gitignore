@@ -4,3 +4,6 @@ desktop.ini
 .idea/
 .vscode/
 *.swp
+
+# 临时产物收口
+.cache/
